@@ -1,15 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <self-practice></self-practice>
+  <CollectionsPractice></CollectionsPractice>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import SelfPractice from './components/SelfPractice.vue';
+import CollectionsPractice from './components/CollectionsPractice.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    SelfPractice,
+    CollectionsPractice
+    
   }
 }
 </script>
