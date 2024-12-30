@@ -55,7 +55,7 @@ export default {
         if(ifDelete)
         {
             alert(`Record ${this.recordId} updated: ${this.record.name}`);        
-            const response = await axios.delete(`http://localhost:5076/api/API/DeleteMood?id=${recordId}`);
+            const response = await axios.delete(`http://localhost:5076/API/DeleteMood?id=${recordId}`);
             console.log(response.data);        
         }
       } catch (err) {

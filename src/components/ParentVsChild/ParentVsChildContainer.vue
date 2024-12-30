@@ -1,6 +1,6 @@
 <template>
   <ParentsComponent />
-  <ChildComponent />
+  <ChildComponent />  
 </template>
 
 <script>

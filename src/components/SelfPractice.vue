@@ -10,7 +10,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
-<template>
+<template> 
   <br />ref content:<span ref="myOwnRef"></span>
   <div class="card-component">
     <fieldset>
@@ -76,6 +76,7 @@
 <script>
 //import { ref } from 'vue';
 export default {
+  name:'SelfPracticeXXX',
   setup() {},
   mounted() {
     this.$refs.myOwnRef.textContent = "dddd";

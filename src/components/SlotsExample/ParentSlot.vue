@@ -10,7 +10,7 @@
       <footer>This is the footer content</footer>
     </template>
   </ChildSlot>
-</template>
+</template>z
 
 <script>
 import ChildSlot from './ChildSlot.vue';

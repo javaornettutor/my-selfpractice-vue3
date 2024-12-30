@@ -2,6 +2,14 @@
 <template>
   <div v-if="data">
     <h1>Edit Record</h1>
+    <ol>
+      <li>
+        Current page using Axios to Update the record, but populate the current
+        form from the listing page
+      </li>
+      <li>Data is paassed via the route.query</li>
+    </ol>
+
     <p>Editing record with ID: {{ data.moodId }}</p>
     <!-- Add form to edit the record -->
     <form @submit.prevent="updateRecord">
@@ -13,7 +21,8 @@
           </tr>
           <tr>
             <td>Mood Description</td>
-            <td><input type="text" v-model="data.description" /></td>
+            <td><textarea v-model="data.description"></textarea></td>
+            <!-- <td><input type="text" v-model="data.description" /></td> -->
           </tr>
           <tr>
             <td>Mood createdAt</td>
@@ -23,11 +32,12 @@
           </tr>
           <tr>
             <td><button type="submit">Save</button></td>
+            <td><button @click="GoBackListing">Go Back</button></td>
           </tr>
         </tbody>
       </table>
     </form>
-      <!-- Display success and error messages -->
+    <!-- Display success and error messages -->
     <div v-if="successMessage" class="green">{{ successMessage }}</div>
     <div v-if="errorMessage" class="red">{{ errorMessage }}</div>
   </div>
@@ -37,16 +47,20 @@
 <script>
 import axios from "axios";
 import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 export default {
   setup() {
     const route = useRoute();
-    //const router = useRouter(); // Add this to access the router instance
+    const router = useRouter(); // Add this to access the router instance
     const data = ref({
       moodId: route.params.id,
       description: route.query.description,
       createdAt: route.query.createdAt,
     });
+
+    const GoBackListing = () => {
+      router.push("ListData");
+    };
 
     const successMessage = ref("");
     const errorMessage = ref("");
@@ -54,7 +68,7 @@ export default {
     const updateRecord = async () => {
       try {
         // Replace with your actual API endpoint
-        const apiEndpoint = `http://localhost:5076/api/API/UpdateMood?id=${data.value.moodId}`;
+        const apiEndpoint = `http://localhost:5076/API/UpdateMood?id=${data.value.moodId}`;
 
         const response = await axios.put(apiEndpoint, {
           description: data.value.description,
@@ -84,6 +98,7 @@ export default {
       updateRecord,
       successMessage,
       errorMessage,
+      GoBackListing,
     };
   },
 };

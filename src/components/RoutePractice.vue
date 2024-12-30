@@ -1,5 +1,6 @@
 <template>
-  
+ 
+
     <nav>
       <ul>
 
@@ -15,8 +16,17 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'App',
+  
+  data(){
+     document.title =  'Vue3 - Landing Page';  
+  },
+  setup(){
+     //document.title =  'Vue3 - Landing Page';
+  }
 };
 </script>
 

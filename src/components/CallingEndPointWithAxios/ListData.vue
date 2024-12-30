@@ -30,7 +30,7 @@
 
 <script>
 import axios from "axios";
-import { ref, computed } from "vue";
+import { ref,  computed} from "vue";
 import { useRouter } from "vue-router";
 
 const Api_FuncName = {
@@ -44,31 +44,28 @@ export default {
       return `ID:${id}, Description:${description},CreateDate:${createDate}`;
     },
   },
- 
+
   setup() {
     const router = useRouter();
     const data = ref([]);
     const error = ref(null);
-    const endPoint = "http://localhost:5076/api/API/";
 
     const goToEditPage = (currentRecord) => {
-      
-      // const postData = {
-      //   moodId: currentRecord.moodId,
-      //   description: currentRecord.description,
-      //   createdAt: currentRecord.CreatedAt,
-      // };
-      //console.info(currentRecord.moodId, currentRecord.description);
-     // router.push({ name: "ModifyData", state: postData });
-      router.push({ name: "ModifyData", params: { id: currentRecord.moodId }, query: { description: currentRecord.description, createdAt: currentRecord.createdAt } });
-
+      router.push({
+        name: "ModifyData",
+        params: { id: currentRecord.moodId },
+        query: {
+          description: currentRecord.description,
+          createdAt: currentRecord.createdAt,
+        },
+      });
     };
 
+    // // Fetch data when the component mounts
     const fetchData = async () => {
+      const endPoint = "http://localhost:5076/API/";
       try {
-        const uri = computed(
-          () => `${endPoint}${Api_FuncName.GetMoodEndPoint}/`
-        );
+        const uri = computed(() => `${endPoint}${Api_FuncName.GetMoodEndPoint}/`);
         const response = await axios.get(uri.value);
         console.log(response.data);
 
@@ -78,15 +75,12 @@ export default {
         error.value = err.message;
       }
     };
-
-    // Fetch data when the component mounts
     fetchData();
 
     return {
       data,
       error,
       goToEditPage,
-      fetchData,
     };
   },
 };
