@@ -16,14 +16,7 @@
       >
         <span>{{ curMood.description }}</span>
         
-        <div>
-          <!-- <router-link
-            :to="{ name: 'ModifyData', params: { id: curMood.moodId } }"
-            class="btn btn-primary btn-sm me-2"
-          >
-            Details
-          </router-link> -->
-
+        <div>        
           <button @click="selectCurRow(curMood)" class="btn btn-secondary btn-sm">
             Edit
           </button>
@@ -43,7 +36,6 @@ export default {
   name: 'ListDataWithPinia',
   
   setup() {
-
     const moodStore = useMoodStore();
     const router = useRouter();
     
@@ -51,7 +43,8 @@ export default {
       moodStore.fetchAllMoods(); // Fetch data when the component mounts
     });
 
-    const selectCurRow = (curItem) => {
+    const selectCurRow = (curItem) => 
+    {
       console.info("selectCurRow", selectCurRow);
       moodStore.setSelectedItem(curItem);
       router.push('/ModifyMoodWithPinia'); // Navigate to the edit page

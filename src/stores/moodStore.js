@@ -15,10 +15,9 @@ export const useMoodStore = defineStore("mood", {
       this.errorMessage = null;
       
       try {
-        const response = await axios.get("http://localhost:5076/API/GetMoods"); // Replace with your API URL
-        console.log("in storeXXX:", response.data);
+        const response = await axios.get("http://localhost:5076/API/GetMoods"); // Replace with your API URL        
         this.moodsCollection = response.data;
-        console.log("in storeyyy:", this.moodsCollection);
+        console.log("Receiving collection in the mood store via API :", this.moodsCollection);
       } catch (err) {
         this.errorMessage = "Failed to fetch moods";
       }

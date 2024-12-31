@@ -62,15 +62,12 @@ import { useMoodStore } from "@/stores/moodStore";
 import { useRouter } from "vue-router";
 
 export default {
+  
   setup() {
     const moodStore = useMoodStore();
     const router = useRouter();
-    const {
-      updateMoodItem,
-      moodUpdatStatus: recordUpdated,
-      errorMessage: error,
-      selectedItem,
-    } = moodStore;
+//// moodUpdatStatus: recordUpdated, errorMessage: error,
+    const { updateMoodItem,  selectedItem } = moodStore;
     const backToListing = () => {
       router.push("/ListDataWithPinia"); // Navigate to the edit page
     };
@@ -83,9 +80,9 @@ export default {
         };
         console.info("jsonData", jsonData);
         updateMoodItem(selectedItem);
-        console.info("recordUpdated:", recordUpdated);
+//        console.info("recordUpdated:", recordUpdated);
         console.info("moodUpdatStatus:", moodStore.moodUpdatStatus);
-        console.info("error:", error);
+  //      console.info("error:", error);
       }
     };
 
