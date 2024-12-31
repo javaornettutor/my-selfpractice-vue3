@@ -9,7 +9,10 @@ import MainApiPage from '../components/CallingEndPointWithAxios/MainAPIPage.vue'
 import DeleteData from '../components/CallingEndPointWithAxios/DeleteData.vue';
 import ModifyData from '../components/CallingEndPointWithAxios/ModifyData.vue';
 import ListData from '../components/CallingEndPointWithAxios/ListData.vue';
-// import CreateData from '../components/CallingEndPointWithAxios/CreateData.vue';
+import ListDataWithPinia from '../components/CallingEndPointWithAxios/Pinia/ListDataWithPinia.vue';
+
+import CreateData from '../components/CallingEndPointWithAxios/CreateData.vue';
+import ModifyMoodWithPinia from '../components/CallingEndPointWithAxios/Pinia/ModifyMoodWithPinia.vue';
 
 
 
@@ -26,9 +29,11 @@ const routes = [
   { path: '/MainApiPage', name: 'MainApiPage', component: MainApiPage },
 
   { path: '/DeleteData/:id', name: 'DeleteData', component: DeleteData },
-  { path: '/ModifyData', name: 'ModifyData', component: ModifyData },
+  { path: '/ModifyData/:id', name: 'ModifyData', component: ModifyData },
   { path: '/ListData', name: 'ListData', component: ListData },
-// { path: '/CreateData', name: 'CreateData', component: CreateData },
+  { path: '/ListDataWithPinia', name: 'ListDataWithPinia', component: ListDataWithPinia, meta: { title: 'Data with Pinia' }  },
+  { path: '/CreateData', name: 'CreateData', component: CreateData },
+  { path: '/ModifyMoodWithPinia', name: 'ModifyMoodWithPinia', component: ModifyMoodWithPinia , meta: { title: 'Modify MoodWith Pinia' } },
 
 ];
 

@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia';
+
 import App from './App.vue'
 //import ParentSlotApp from './components/SlotsExample/ParentSlot.vue'
 import router from './router'; // Import the router
@@ -9,7 +11,7 @@ import 'bootstrap'; // Bootstrap JS (optional, if using components like modals o
 const app = createApp(App);
 
 app.use(router); // Use the router in your Vue app
-
+app.use(createPinia());
 app.mount('#app')
 app.config.devtools = true;
 
