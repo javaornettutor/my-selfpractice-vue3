@@ -3,26 +3,26 @@
     <h1 class="text-center my-4">List Data with Pinia</h1>
     
     <!-- Error message -->
-    <div v-if="error" class="alert alert-danger">
-      {{ error }}
+    <div v-if="moodStore.errorMessage" class="alert alert-danger">
+      {{ moodStore.errorMessage }}
     </div>
     
     <!-- List of moods -->
-    <ul class="list-group" v-if="moods.length">
+    <ul class="list-group" v-if="moodStore.moodsCollection">
       <li
-        v-for="curMood in moods"
+        v-for="curMood in moodStore.moodsCollection"
         :key="curMood.id"
         class="list-group-item d-flex justify-content-between align-items-center"
       >
         <span>{{ curMood.description }}</span>
         
         <div>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'ModifyData', params: { id: curMood.moodId } }"
             class="btn btn-primary btn-sm me-2"
           >
             Details
-          </router-link>
+          </router-link> -->
 
           <button @click="selectCurRow(curMood)" class="btn btn-secondary btn-sm">
             Edit
@@ -39,18 +39,16 @@ import { useMoodStore } from "../../../stores/moodStore";
 import { useRouter } from 'vue-router';
 
 export default {
+  
+  name: 'ListDataWithPinia',
+  
   setup() {
+
     const moodStore = useMoodStore();
     const router = useRouter();
-    const {
-      fetchAllMoods: fetchMood,
-      moodsCollection: moods,
-      moodsLoadingStatus: loading,
-      errorMessage: error,
-    } = moodStore;
-
+    
     onMounted(() => {
-      fetchMood(); // Fetch data when the component mounts
+      moodStore.fetchAllMoods(); // Fetch data when the component mounts
     });
 
     const selectCurRow = (curItem) => {
@@ -58,7 +56,7 @@ export default {
       moodStore.setSelectedItem(curItem);
       router.push('/ModifyMoodWithPinia'); // Navigate to the edit page
     };
-    return { fetchMood, moods, loading, error, selectCurRow };
+    return { selectCurRow, moodStore};//, loading, error,  };
     //return { fetchMood, moods, loading, error, selectCurRow };
   },
 };

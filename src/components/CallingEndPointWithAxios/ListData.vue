@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Data from API</h1>
+    <ol>
+      <li>List Data with Axios</li>
+    </ol>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -30,7 +33,7 @@
 
 <script>
 import axios from "axios";
-import { ref,  computed} from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const Api_FuncName = {
@@ -46,6 +49,7 @@ export default {
   },
 
   setup() {
+    document.title = "List Data with Axios";
     const router = useRouter();
     const data = ref([]);
     const error = ref(null);
@@ -65,7 +69,9 @@ export default {
     const fetchData = async () => {
       const endPoint = "http://localhost:5076/API/";
       try {
-        const uri = computed(() => `${endPoint}${Api_FuncName.GetMoodEndPoint}/`);
+        const uri = computed(
+          () => `${endPoint}${Api_FuncName.GetMoodEndPoint}/`
+        );
         const response = await axios.get(uri.value);
         console.log(response.data);
 
