@@ -28,7 +28,7 @@
 
 <script>
 import { onMounted } from "vue";
-import { useMoodStore } from "../../../stores/moodStore";
+import { useMoodStore } from "@/stores/moodStore";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -49,8 +49,8 @@ export default {
       moodStore.setSelectedItem(curItem);
       router.push('/ModifyMoodWithPinia'); // Navigate to the edit page
     };
-    return { selectCurRow, moodStore};//, loading, error,  };
-    //return { fetchMood, moods, loading, error, selectCurRow };
+    return { selectCurRow, moodStore};
+    
   },
 };
 </script>

@@ -32,13 +32,8 @@ export const useMoodStore = defineStore("mood", {
           `http://localhost:5076/API/UpdateMood`,
           item
         );
-        console.info("updateMoodItem:", response.data);
+        console.info("updateMoodItem:", response.data);       
         
-        // Update the local state with the updated item
-        // const index = this.items.findIndex((i) => i.id === item.moodId);
-        // if (index !== -1) {
-        //   this.items[index] = response.data;
-        // }
       } catch (error) {
         this.moodUpdatStatus = false;
         this.errorMessage = error.message || "Failed to update item";
