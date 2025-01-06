@@ -1,3 +1,4 @@
+// test only
 import { createRouter, createWebHistory } from 'vue-router';
 import SelfPractice from '../components/SelfPractice.vue';
 import CollectionsPractice from '../components/CollectionsPractice.vue';
