@@ -9,6 +9,8 @@
         <li><router-link to="/CollectionsPractice">CollectionsPractice</router-link></li>        
         <li><router-link to="/ParentWithChild">ParentWithChild</router-link></li>
         <li><router-link to="/SlotExample">SlotExample</router-link></li>
+        <li><router-link to="/ResponsiveStylesMain">ResponsiveStylesMain</router-link></li>
+
       </ul>
     </nav>
     <router-view></router-view> <!-- This is where your routed components will render -->

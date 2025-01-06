@@ -66,8 +66,8 @@ export default {
   setup() {
     const moodStore = useMoodStore();
     const router = useRouter();
-//// moodUpdatStatus: recordUpdated, errorMessage: error,
-    const { updateMoodItem,  selectedItem } = moodStore;
+    const selectedItem = moodStore.selectedItem;
+    
     const backToListing = () => {
       router.push("/ListDataWithPinia"); // Navigate to the edit page
     };
@@ -79,7 +79,7 @@ export default {
           createdAt: selectedItem.createdAt,
         };
         console.info("jsonData", jsonData);
-        updateMoodItem(selectedItem);
+        moodStore.updateMoodItem(selectedItem);
 //        console.info("recordUpdated:", recordUpdated);
         console.info("moodUpdatStatus:", moodStore.moodUpdatStatus);
   //      console.info("error:", error);
